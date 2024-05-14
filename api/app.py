@@ -269,3 +269,10 @@ def pool_stat():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001)
+
+@app.route('/api/onboarding', methods=['POST'])
+def onboarding():
+    user_data = request.json
+    onboarding = Onboarding()
+    agents, tools, knowledge = onboarding.generate_mas(user_data)
+    ...
