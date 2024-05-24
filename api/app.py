@@ -1,12 +1,10 @@
 import os
+from controllers.mabos_router import mabos_router
 
 if not os.environ.get("DEBUG") or os.environ.get("DEBUG").lower() != 'true':
     from gevent import monkey
-
     monkey.patch_all()
-
     import grpc.experimental.gevent
-
     grpc.experimental.gevent.init_gevent()
 
 import json
@@ -60,7 +58,7 @@ else:
 
 class DifyApp(Flask):
     pass
-
+    
 
 # -------------
 # Configuration
@@ -205,6 +203,8 @@ def register_blueprints(app):
 
     app.register_blueprint(inner_api_bp)
 
+    # Add the MABOS router
+    app.include_router(mabos_router, prefix="/api/mabos", tags=["MABOS"])
 
 # create app
 app = create_app()

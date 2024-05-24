@@ -1,11 +1,11 @@
 from fastapi import APIRouter
 from typing import List
-from ..mabos.agents.agent import Agent
-from ..mabos.goal_management.goal import Goal
-from ..mabos.planning.plan import Plan   
-from ..mabos.task_management.action import Action
+from ...mabos.agents.agent import Agent
+from ...mabos.goal_management.goal import Goal
+from ...mabos.planning.plan import Plan   
+from ...mabos.task_management.action import Action
 from ..mabos.knowledge_base import KnowledgeBase
-from ..mabos.knowledge_management.ontology.ontology import Ontology
+from ...mabos.knowledge_management.ontology.ontology import Ontology
 
 router = APIRouter()
 
