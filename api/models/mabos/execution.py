@@ -1,5 +1,3 @@
-# Define the SQLAlchemy models for the MABOS-related database tables.
-# The models are used to interact with the database using the ORM.from sqlalchemy
 from sqlalchemy import Column, Integer, ForeignKey, DateTime, String, Float, relationship
 from .database import Base
 
