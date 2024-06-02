@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "1c17f8577dc04d04",
+        "id": "db2182a61021dfdf",
         "type": "tabs",
         "children": [
           {
-            "id": "d9e441fa80ddff55",
+            "id": "ed4577074e24d423",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -65,7 +65,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "f2ab41a371acf6fd",
@@ -121,12 +121,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -138,37 +138,44 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "32737a44c3debe6b",
+  "active": "ed4577074e24d423",
   "lastOpenFiles": [
-    "intergration-notes.md",
-    "mabos-dify-intergration.md",
-    "task_description.md",
-    "project_tree.md",
-    "docs/communication.md",
-    "docs/reasoning.md",
-    "docs/knowledge_graph.md",
-    "docs/ontology_api.md",
-    "docs/execution.md",
-    "docs/planning.md",
-    "docs",
-    "api/mabos/agents/{agent_id}/execution_api.py",
-    "api/mabos/agents/{agent_id}/plans_api.py",
-    "api/mabos/agents/{agent_id}/communication_api.py",
-    "api/mabos/agents/{agent_id}/communication_api",
-    "api/mabos/agents/{agent_id}/reasoning_api.py",
-    "api/mabos/agents/{agent_id}",
-    "api/mabos/agents",
-    "api/mabos/agents_api.py",
-    "api/mabos/knowledge-graph_api.py",
-    "mabos/ontology.py.md",
-    "api/mabos_router.py.md",
-    "mabos/knowledge_base.py.md",
-    "mabos/action.py.md",
-    "mabos/plan.py.md",
-    "mabos/agent.py.md",
-    "MABOS-Multi-Agent Business Operating System.md",
-    "srd.md",
-    "NetworkX.md",
-    "Owlready2.md"
+    "api/core/model_runtime/docs/zh_Hans/images/index/image-2.png",
+    "mabos/mabos-docs/MABOS Coding Task List.md",
+    "Untitled.canvas",
+    "Establish a clear process for updating and maintaining the system, including regular code reviews, testing, and deployment.md",
+    "mabos/mabos-docs/MABOS - Codebase Modules.md",
+    "mabos/mabos-docs/Monitor the system performance and resource utilization under different load conditions to identify any bottlenecks or scalability issues.md",
+    "mabos/mabos-docs/Create detailed documentation for each component, including the web application, API, and MABOS, describing their purpose, structure, and usage.md",
+    "mabos/mabos-docs/Integrate a state management solution, such as Redux, MobX, or XState to handle the complex state interactions between the UI and the multi-agent system.md",
+    "mabos/mabos-docs/Perform end-to-end testing, starting from the web application UI, going through the API, and finally to the MABOS component.md",
+    "Define a data format that is easily serializable and parsable, such as JSON or Protocol Buffers, for data exchange between the web application, API, and MABOS.md",
+    "mabos/mabos-docs/Create a comprehensive set of test cases that cover various scenarios, including edge cases and error handling.md",
+    "Implement a clear interface for the MABOS component to receive requests and send responses, possibly through a message queue or pub/Implement a clear interface for the MABOS component to receive requests and send responses, possibly through a message queue or pub sub system.md",
+    "mabos/mabos-docs/Define a data format that is easily serializable and parsable, such as JSON or Protocol Buffers, for data exchange between the web application, API, and MABOS.md",
+    "Implement a clear interface for the MABOS component to receive requests and send responses, possibly through a message queue or pub",
+    "mabos/mabos-docs/Establish well-defined API endpoints for the web application to interact with, using standard protocols like REST or GraphQL.md",
+    "mabos/mabos-docs/Organize the UI components related to the MABOS feature in a way that reflects the structure of the multi-agent system, making it easier to manage and maintain.md",
+    "mabos/mabos-docs/Implement a clear way for the web application to communicate with the API, possibly through a dedicated service or API client module.md",
+    "mabos/mabos-docs/Knowledge management module subtask.md",
+    "mabos/mabos-docs/Inefficiency Identifier.md",
+    "mabos/mabos-docs/Implement a more structured approach to ontology management in the knowledge management module, possibly using a standard ontology language like OWL (Web Ontology Language).md",
+    "mabos/mabos-docs/HTNPlanner.md",
+    "mabos/mabos-docs/Delayed Message Queue.md",
+    "mabos/mabos-docs/Expand the planning module to support more sophisticated planning techniques, such as hierarchical task network (HTN) planning or partial-order planning (POP).md",
+    "mabos/mabos-docs/Define a clear interface or communication mechanism between the MABOS component and the API.md",
+    "mabos/mabos-docs/Bottleneck Identifier.md",
+    "mabos/mabos-docs/agents management/bdi/Skills.md",
+    "mabos/mabos-docs/agents management/Agents.md",
+    "mabos/mabos-docs/task management/Action.md",
+    "mabos/mabos-docs/agents management/bdi",
+    "mabos/mabos-docs/configuration management",
+    "mabos/mabos-docs/user management",
+    "mabos/mabos-docs/communication management",
+    "mabos/mabos-docs/task management",
+    "mabos/mabos-docs/goal management",
+    "mabos/mabos-docs/reasoner",
+    "mabos/mabos-docs/process management",
+    "mabos/mabos-docs/data management"
   ]
 }

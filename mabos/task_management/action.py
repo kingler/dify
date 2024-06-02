@@ -19,6 +19,7 @@ class Action:
         """
         self.action_id = action_id
         self.description = description
+        self.dify_tool_id = dify_tool_id  # Optional mapping to Dify tool
 
     def execute(self, agent: Agent):
         """

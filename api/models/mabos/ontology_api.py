@@ -3,6 +3,7 @@ from enum import Enum
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text, Boolean
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
+from .database import Base
 
 Base = declarative_base()
 

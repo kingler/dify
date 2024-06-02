@@ -1,243 +1,142 @@
-![cover-v5-optimized](https://github.com/langgenius/dify/assets/13230914/f9e19af5-61ba-4119-b926-d10c4c06ebab)
+# Goal-Oriented BDI Multi-Agent Business Operating System (MABOS)
 
-<p align="center">
-  <a href="https://cloud.dify.ai">Dify Cloud</a> ·
-  <a href="https://docs.dify.ai/getting-started/install-self-hosted">Self-hosting</a> ·
-  <a href="https://docs.dify.ai">Documentation</a> ·
-  <a href="https://cal.com/guchenhe/60-min-meeting">Enterprise inquiry</a>
-</p>
+## Overview
+The Goal-Oriented Belief-Desire-Intention (BDI) Multi-Agent Business Operating System (MABOS) is an advanced, intelligent platform designed to enhance business operations through the integration of autonomous agents. These agents utilize sophisticated reasoning and inferencing capabilities to manage goals, execute tasks, and deliver knowledge proactively. This system leverages cutting-edge technologies, including graph databases, ontologies, topic maps, and retrieval-augmented generation (RAG) via vector databases, to provide a robust and flexible solution for modern businesses.
 
-<p align="center">
-    <a href="https://dify.ai" target="_blank">
-        <img alt="Static Badge" src="https://img.shields.io/badge/Product-F04438"></a>
-    <a href="https://dify.ai/pricing" target="_blank">
-        <img alt="Static Badge" src="https://img.shields.io/badge/free-pricing?logo=free&color=%20%23155EEF&label=pricing&labelColor=%20%23528bff"></a>
-    <a href="https://discord.gg/FngNHpbcY7" target="_blank">
-        <img src="https://img.shields.io/discord/1082486657678311454?logo=discord&labelColor=%20%235462eb&logoColor=%20%23f5f5f5&color=%20%235462eb"
-            alt="chat on Discord"></a>
-    <a href="https://twitter.com/intent/follow?screen_name=dify_ai" target="_blank">
-        <img src="https://img.shields.io/twitter/follow/dify_ai?logo=X&color=%20%23f5f5f5"
-            alt="follow on Twitter"></a>
-    <a href="https://hub.docker.com/u/langgenius" target="_blank">
-        <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/langgenius/dify-web?labelColor=%20%23FDB062&color=%20%23f79009"></a>
-    <a href="https://github.com/langgenius/dify/graphs/commit-activity" target="_blank">
-        <img alt="Commits last month" src="https://img.shields.io/github/commit-activity/m/langgenius/dify?labelColor=%20%2332b583&color=%20%2312b76a"></a>
-    <a href="https://github.com/langgenius/dify/" target="_blank">
-        <img alt="Issues closed" src="https://img.shields.io/github/issues-search?query=repo%3Alanggenius%2Fdify%20is%3Aclosed&label=issues%20closed&labelColor=%20%237d89b0&color=%20%235d6b98"></a>
-    <a href="https://github.com/langgenius/dify/discussions/" target="_blank">
-        <img alt="Discussion posts" src="https://img.shields.io/github/discussions/langgenius/dify?labelColor=%20%239b8afb&color=%20%237a5af8"></a>
-</p>
+```plantuml
+@startuml
+skinparam linetype ortho
 
-<p align="center">
-  <a href="./README.md"><img alt="README in English" src="https://img.shields.io/badge/English-d9d9d9"></a>
-  <a href="./README_CN.md"><img alt="简体中文版自述文件" src="https://img.shields.io/badge/简体中文-d9d9d9"></a>
-  <a href="./README_JA.md"><img alt="日本語のREADME" src="https://img.shields.io/badge/日本語-d9d9d9"></a>
-  <a href="./README_ES.md"><img alt="README en Español" src="https://img.shields.io/badge/Español-d9d9d9"></a>
-  <a href="./README_FR.md"><img alt="README en Français" src="https://img.shields.io/badge/Français-d9d9d9"></a>
-  <a href="./README_KL.md"><img alt="README tlhIngan Hol" src="https://img.shields.io/badge/Klingon-d9d9d9"></a>
-  <a href="./README_KR.md"><img alt="README in Korean" src="https://img.shields.io/badge/한국어-d9d9d9"></a>
-</p>
+package "Multi-Agent System" {
+    package "Ontology" {
+        class Customer
+        class Order
+        class Product
+        Customer --> Order : places
+        Order --> Product : includes
+    }
 
+    package "Knowledge Graph" {
+        class Node {
+            + name: String
+            + type: String
+        }
+        class Edge {
+            + source: Node
+            + target: Node
+            + type: String
+        }
+        Customer -[hidden]down-> Node
+        Node -[hidden]down-> Edge
+        Order -[hidden]down-> Node
+        Product -[hidden]down-> Node
+    }
 
-Dify is an open-source LLM app development platform. Its intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production. Here's a list of the core features:
-</br> </br>
+    package "Reasoning Engine" {
+        class Rule {
+            + condition: String
+            + action: String
+        }
+        Rule --> "Knowledge Graph" : applies to
+    }
 
-**1. Workflow**: 
-  Build and test powerful AI workflows on a visual canvas, leveraging all the following features and beyond.
+    package "RAG" {
+        class Retrieval
+        class Generation
+        Retrieval --> "Knowledge Graph" : retrieves data from
+        Generation --> Retrieval : generates responses from
+    }
 
+    package "Agents" {
+        class Agent {
+            + id: String
+            + tasks: List
+        }
+        Agent --> RAG : queries
+    }
+}
 
-  https://github.com/langgenius/dify/assets/13230914/356df23e-1604-483d-80a6-9517ece318aa
+"Ontology" -down-> "Knowledge Graph" : defines
+"Knowledge Graph" -down-> "Reasoning Engine" : provides data to
+"Reasoning Engine" -down-> "Knowledge Graph" : infers new data to
+"Knowledge Graph" -down-> RAG : retrieves data from
+RAG -down-> Agents : provides information to
+@enduml
 
-
-
-**2. Comprehensive model support**: 
-  Seamless integration with hundreds of proprietary / open-source LLMs from dozens of inference providers and self-hosted solutions, covering GPT, Mistral, Llama3, and any OpenAI API-compatible models. A full list of supported model providers can be found [here](https://docs.dify.ai/getting-started/readme/model-providers).
-
-![providers-v5](https://github.com/langgenius/dify/assets/13230914/5a17bdbe-097a-4100-8363-40255b70f6e3)
-
-
-**3. Prompt IDE**: 
-  Intuitive interface for crafting prompts, comparing model performance, and adding additional features such as text-to-speech to a chat-based app. 
-
-**4. RAG Pipeline**: 
-  Extensive RAG capabilities that cover everything from document ingestion to retrieval, with out-of-box support for text extraction from PDFs, PPTs, and other common document formats.
-
-**5. Agent capabilities**: 
-  You can define agents based on LLM Function Calling or ReAct, and add pre-built or custom tools for the agent. Dify provides 50+ built-in tools for AI agents, such as Google Search, DELL·E, Stable Diffusion and WolframAlpha.
-
-**6. LLMOps**: 
-  Monitor and analyze application logs and performance over time. You could continuously improve prompts, datasets, and models based on production data and annotations.
-
-**7. Backend-as-a-Service**: 
-  All of Dify's offerings come with corresponding APIs, so you could effortlessly integrate Dify into your own business logic.
-
-
-## Feature comparison
-<table style="width: 100%;">
-  <tr>
-    <th align="center">Feature</th>
-    <th align="center">Dify.AI</th>
-    <th align="center">LangChain</th>
-    <th align="center">Flowise</th>
-    <th align="center">OpenAI Assistants API</th>
-  </tr>
-  <tr>
-    <td align="center">Programming Approach</td>
-    <td align="center">API + App-oriented</td>
-    <td align="center">Python Code</td>
-    <td align="center">App-oriented</td>
-    <td align="center">API-oriented</td>
-  </tr>
-  <tr>
-    <td align="center">Supported LLMs</td>
-    <td align="center">Rich Variety</td>
-    <td align="center">Rich Variety</td>
-    <td align="center">Rich Variety</td>
-    <td align="center">OpenAI-only</td>
-  </tr>
-  <tr>
-    <td align="center">RAG Engine</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td align="center">Agent</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-    <td align="center">❌</td>
-    <td align="center">✅</td>
-  </tr>
-  <tr>
-    <td align="center">Workflow</td>
-    <td align="center">✅</td>
-    <td align="center">❌</td>
-    <td align="center">✅</td>
-    <td align="center">❌</td>
-  </tr>
-  <tr>
-    <td align="center">Observability</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-    <td align="center">❌</td>
-    <td align="center">❌</td>
-  </tr>
-  <tr>
-    <td align="center">Enterprise Features (SSO/Access control)</td>
-    <td align="center">✅</td>
-    <td align="center">❌</td>
-    <td align="center">❌</td>
-    <td align="center">❌</td>
-  </tr>
-  <tr>
-    <td align="center">Local Deployment</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-    <td align="center">✅</td>
-    <td align="center">❌</td>
-  </tr>
-</table>
-
-## Using Dify
-
-- **Cloud </br>**
-We host a [Dify Cloud](https://dify.ai) service for anyone to try with zero setup. It provides all the capabilities of the self-deployed version, and includes 200 free GPT-4 calls in the sandbox plan.
-
-- **Self-hosting Dify Community Edition</br>**
-Quickly get Dify running in your environment with this [starter guide](#quick-start).
-Use our [documentation](https://docs.dify.ai) for further references and more in-depth instructions.
-
-- **Dify for enterprise / organizations</br>**
-We provide additional enterprise-centric features. [Schedule a meeting with us](https://cal.com/guchenhe/30min) or [send us an email](mailto:business@dify.ai?subject=[GitHub]Business%20License%20Inquiry) to discuss enterprise needs. </br>
-  > For startups and small businesses using AWS, check out [Dify Premium on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-t22mebxzwjhu6) and deploy it to your own AWS VPC with one-click. It's an affordable AMI offering with the option to create apps with custom logo and branding.
-
-
-## Staying ahead
-
-Star Dify on GitHub and be instantly notified of new releases.
-
-![star-us](https://github.com/langgenius/dify/assets/13230914/b823edc1-6388-4e25-ad45-2f6b187adbb4)
-
-
-
-## Quick start
-> Before installing Dify, make sure your machine meets the following minimum system requirements:
-> 
->- CPU >= 2 Core
->- RAM >= 4GB
-
-</br>
-
-The easiest way to start the Dify server is to run our [docker-compose.yml](docker/docker-compose.yaml) file. Before running the installation command, make sure that [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed on your machine:
-
-```bash
-cd docker
-docker compose up -d
 ```
 
-After running, you can access the Dify dashboard in your browser at [http://localhost/install](http://localhost/install) and start the initialization process.
+## Key Features
+1. **Proactive Knowledge Delivery**:
+   - The MABOS integrates seamlessly with Process-Centered Software Engineering Environments (PSEEs) to deliver relevant knowledge proactively based on the user’s current tasks and software processes. Agents monitor user actions and provide pertinent information without requiring explicit queries, enhancing efficiency and usability.
+2. **Integration with Business Processes**:
+   - Knowledge Management (KM) activities such as creation, capture, retrieval, access, delivery, and maintenance are embedded into business processes. This integration ensures that knowledge delivery is context-aware and relevant to the tasks at hand, leveraging an organizational memory that stores artifacts, lessons learned, and message packages.
+3. **Role-Based Agent Development**:
+   - Agents are assigned specific roles that define their goals, plans, tasks, and actions, ensuring clear responsibilities and specialized task execution. This role-based approach enhances the agents' ability to perform specialized functions and manage complex workflows effectively.
+4. **Advanced Reasoning and Inferencing**:
+   - Agents utilize graph databases, ontologies, and topic maps to represent and reason about domain knowledge. This capability enables them to infer new knowledge and provide insights based on the existing data. Additionally, retrieval-augmented generation (RAG) via vector databases enhances the agents' ability to retrieve and synthesize information dynamically.
 
-> If you'd like to contribute to Dify or do additional development, refer to our [guide to deploying from source code](https://docs.dify.ai/getting-started/install-self-hosted/local-source-code)
+5. **Goal and Sub-Goal Management**:
+   - The MABOS supports the definition and management of goals and sub-goals, allowing for nested goal structures. Agents can set primary goals, add sub-goals, and manage them effectively, ensuring that all aspects of the business operations are aligned with strategic objectives.
+6. **Standardized Agent Development Framework (AgeODE)**:
+   - The system includes a standardized infrastructure for developing and integrating agents, ensuring consistency and reusability. AgeODE defines agent classes, communication protocols, and access methods, facilitating seamless agent integration and coordination.
+7. **Multi-Agent Coordination**:
+   - The architecture includes general agents (such as Personal Assistant Agents, ODE’s Router Agents, and Similar Project Identifier Agents) and tool-specific agents. These agents work together to deliver relevant knowledge and support various business functions based on user actions and roles.
 
-## Next steps
+  
+## Use Cases
 
-If you need to customize the configuration, please refer to the comments in our [docker-compose.yml](docker/docker-compose.yaml) file and manually set the environment configuration. After making the changes, please run `docker-compose up -d` again. You can see the full list of environment variables [here](https://docs.dify.ai/getting-started/install-self-hosted/environments).
+1. **Business Process Automation**:
+   - Automate complex business processes by assigning agents specific roles and goals. Agents can manage tasks, execute plans, and ensure that processes are completed efficiently and effectively.
 
-If you'd like to configure a highly-available setup, there are community-contributed [Helm Charts](https://helm.sh/) which allow Dify to be deployed on Kubernetes.
+2. **Proactive Knowledge Management**:
+   - Enhance knowledge management by delivering relevant information to users based on their current tasks and activities. This proactive approach reduces the need for manual searches and improves decision-making.
 
-- [Helm Chart by @LeoQuote](https://github.com/douban/charts/tree/master/charts/dify)
-- [Helm Chart by @BorisPolonsky](https://github.com/BorisPolonsky/dify-helm)
+3. **Strategic Goal Management**:
+   - Define and manage strategic goals and sub-goals, ensuring that all business activities are aligned with the company's objectives. Agents can track progress, identify potential issues, and suggest corrective actions.
 
-
-## Contributing
-
-For those who'd like to contribute code, see our [Contribution Guide](https://github.com/langgenius/dify/blob/main/CONTRIBUTING.md). 
-At the same time, please consider supporting Dify by sharing it on social media and at events and conferences.
-
-
-> We are looking for contributors to help with translating Dify to languages other than Mandarin or English. If you are interested in helping, please see the [i18n README](https://github.com/langgenius/dify/blob/main/web/i18n/README.md) for more information, and leave us a comment in the `global-users` channel of our [Discord Community Server](https://discord.gg/8Tpq4AcN9c).
-
-**Contributors**
-
-<a href="https://github.com/langgenius/dify/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=langgenius/dify" />
-</a>
-
-## Community & contact
-
-* [Github Discussion](https://github.com/langgenius/dify/discussions). Best for: sharing feedback and asking questions.
-* [GitHub Issues](https://github.com/langgenius/dify/issues). Best for: bugs you encounter using Dify.AI, and feature proposals. See our [Contribution Guide](https://github.com/langgenius/dify/blob/main/CONTRIBUTING.md).
-* [Email](mailto:support@dify.ai?subject=[GitHub]Questions%20About%20Dify). Best for: questions you have about using Dify.AI.
-* [Discord](https://discord.gg/FngNHpbcY7). Best for: sharing your applications and hanging out with the community.
-* [Twitter](https://twitter.com/dify_ai). Best for: sharing your applications and hanging out with the community.
-
-Or, schedule a meeting directly with a team member:
-
-<table>
-  <tr>
-    <th>Point of Contact</th>
-    <th>Purpose</th>
-  </tr>
-  <tr>
-    <td><a href='https://cal.com/guchenhe/15min' target='_blank'><img class="schedule-button" src='https://github.com/langgenius/dify/assets/13230914/9ebcd111-1205-4d71-83d5-948d70b809f5' alt='Git-Hub-README-Button-3x' style="width: 180px; height: auto; object-fit: contain;"/></a></td>
-    <td>Business enquiries & product feedback</td>
-  </tr>
-  <tr>
-    <td><a href='https://cal.com/pinkbanana' target='_blank'><img class="schedule-button" src='https://github.com/langgenius/dify/assets/13230914/d1edd00a-d7e4-4513-be6c-e57038e143fd' alt='Git-Hub-README-Button-2x' style="width: 180px; height: auto; object-fit: contain;"/></a></td>
-    <td>Contributions, issues & feature requests</td>
-  </tr>
-</table>
-
-## Star history
-
-[![Star History Chart](https://api.star-history.com/svg?repos=langgenius/dify&type=Date)](https://star-history.com/#langgenius/dify&Date)
+4. **Enhanced Customer Support**:
+   - Deploy agents to manage customer interactions, provide personalized responses, and deliver relevant information based on the customer's history and current queries. This improves customer satisfaction and reduces response times.
 
 
-## Security disclosure
+## Technical Implementation
 
-To protect your privacy, please avoid posting security issues on GitHub. Instead, send your questions to security@dify.ai and we will provide you with a more detailed answer.
+1. **Agent Class (agent.py)**:
+   - The `Agent` class encapsulates the agent's BDI capabilities, including beliefs, desires, and intentions. It supports role assignment, goal setting, sub-goal management, task management, and knowledge inferencing using graph databases and vector databases.
 
-## License
+2. **API Integration (onboarding_api.py)**:
+   - The API provides endpoints for agent registration, role assignment, goal setting, sub-goal management, task management, and knowledge inferencing. These endpoints facilitate interaction between the agents and the system, ensuring seamless operation.
 
-This repository is available under the [Dify Open Source License](LICENSE), which is essentially Apache 2.0 with a few additional restrictions.
+3. **Knowledge Base Integration**:
+   - The system integrates with graph databases and vector databases to represent and manage knowledge. Agents use these databases to infer new knowledge, retrieve augmented data, and provide insights based on complex queries.
+
+## Integration with Dify
+
+### Agent Integration
+- Understand the agent models and architectures used in both MABOS and Dify.
+- Assess the feasibility and benefits of integrating or synchronizing the agent representations.
+- Propose a mapping or integration strategy if deemed necessary, considering compatibility and development effort.
+
+### Action/Task and Tool Integration
+- Analyze the similarities and differences between MABOS actions/tasks and Dify tools.
+- Assess the feasibility and benefits of integrating or mapping MABOS actions/tasks with Dify tools.
+- Propose an integration or adaptation strategy, considering interface compatibility and required modifications.
+
+### Planning/Execution and Workflow Integration
+- Examine the alignment between MABOS planning/execution processes and Dify's workflow model.
+- Identify necessary adaptations or extensions to integrate MABOS planning/execution with Dify workflows.
+- Propose an integration strategy, considering workflow compatibility, required modifications, and coordination complexities.
+
+### Data and Knowledge Integration
+- Understand the data and knowledge management systems in both MABOS and Dify.
+- Assess the compatibility and interoperability of MABOS data and knowledge with Dify's systems.
+- Propose an integration strategy, considering data model compatibility, exchange protocols, and synchronization mechanisms.
+
+### User Interaction and Control Integration
+- Analyze the user interaction and control mechanisms in both MABOS and Dify.
+- Assess the compatibility and feasibility of integrating MABOS user interaction and control with Dify's mechanisms.
+- Propose an integration strategy, considering interface compatibility, required adaptations, and user experience consistency.
+
+## Folder Structure
+
+
+
