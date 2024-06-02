@@ -4,18 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "db2182a61021dfdf",
+        "id": "3f2612dc9de74122",
         "type": "tabs",
         "children": [
           {
-            "id": "ed4577074e24d423",
+            "id": "9bf0ed19ab5652a6",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "docs/folder tree structure/api directory tree.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5808062f598c9e5d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/folder tree structure/navigation tree structure.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -65,7 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 303.500732421875
   },
   "right": {
     "id": "f2ab41a371acf6fd",
@@ -81,6 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "docs/folder tree structure/navigation tree structure.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "docs/folder tree structure/navigation tree structure.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +137,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "docs/folder tree structure/navigation tree structure.md"
+              }
             }
           }
         ],
@@ -126,7 +147,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -138,44 +160,45 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ed4577074e24d423",
+  "active": "5808062f598c9e5d",
   "lastOpenFiles": [
+    "mabos/knowledge_management/knowledge_base/__init__.py",
+    "mabos/knowledge_management/knowledge_graph/__init__.py",
+    "mabos/knowledge_management/knowledge_graph/knowledge_graph.py",
+    "mabos/knowledge_management/knowledge_graph",
+    "mabos/knowledge_management/knowledge_base/knowledge_base.py",
+    "mabos/knowledge_management/knowledge_graph.py",
+    "mabos/knowledge_management/knowledge_base.py",
+    "mabos/knowledge_management/process_templates/__init__.py",
+    "mabos/knowledge_management/process_templates/process_template.py",
+    "mabos/knowledge_management/process_templates",
+    "mabos/knowledge_management/industry_standards/__init__.py",
+    "docs/folder tree structure/web directory tree.md",
+    "docs/folder tree structure/api directory tree.md",
+    "docs/folder tree structure/codebase directory tree.md",
+    "docs/folder tree structure/mabos directory tree.md",
+    "docs/intergration-notes.md",
+    "docs/Owlready2.md",
+    "docs/ontology_api.md",
+    "docs/mabos/plan management/planning.md",
+    "docs/mabos/reasoner/Reasoning.md",
+    "docs/mabos/knowledge management/knowledge_graph.md",
+    "docs/mabos/agents management/skill management/agent_skills.md",
+    "docs/mabos/agents management/Broker.md",
+    "docs/mabos/agents management/Agents.md",
+    "docs/mabos/user management/Authentication Manager.md",
+    "docs/task_description.md",
+    "docs/Software Requirement Documentation (SRD).md",
+    "docs/mabos/task management/execution.md",
+    "docs/mabos/agents management/skill management/Skills.md",
+    "docs/mabos/agents management/bdi/Skills.md",
+    "docs/mabos/agents management/bdi/Intention.md",
+    "docs/mabos/agents management/bdi/Desire.md",
+    "docs/mabos/agents management/bdi/Belief.md",
+    "docs/mabos/agents management/bdi/BDI.md",
+    "docs/mabos/user management/User.md",
+    "docs/mabos/user management/User Management.md",
     "api/core/model_runtime/docs/zh_Hans/images/index/image-2.png",
-    "mabos/mabos-docs/MABOS Coding Task List.md",
-    "Untitled.canvas",
-    "Establish a clear process for updating and maintaining the system, including regular code reviews, testing, and deployment.md",
-    "mabos/mabos-docs/MABOS - Codebase Modules.md",
-    "mabos/mabos-docs/Monitor the system performance and resource utilization under different load conditions to identify any bottlenecks or scalability issues.md",
-    "mabos/mabos-docs/Create detailed documentation for each component, including the web application, API, and MABOS, describing their purpose, structure, and usage.md",
-    "mabos/mabos-docs/Integrate a state management solution, such as Redux, MobX, or XState to handle the complex state interactions between the UI and the multi-agent system.md",
-    "mabos/mabos-docs/Perform end-to-end testing, starting from the web application UI, going through the API, and finally to the MABOS component.md",
-    "Define a data format that is easily serializable and parsable, such as JSON or Protocol Buffers, for data exchange between the web application, API, and MABOS.md",
-    "mabos/mabos-docs/Create a comprehensive set of test cases that cover various scenarios, including edge cases and error handling.md",
-    "Implement a clear interface for the MABOS component to receive requests and send responses, possibly through a message queue or pub/Implement a clear interface for the MABOS component to receive requests and send responses, possibly through a message queue or pub sub system.md",
-    "mabos/mabos-docs/Define a data format that is easily serializable and parsable, such as JSON or Protocol Buffers, for data exchange between the web application, API, and MABOS.md",
-    "Implement a clear interface for the MABOS component to receive requests and send responses, possibly through a message queue or pub",
-    "mabos/mabos-docs/Establish well-defined API endpoints for the web application to interact with, using standard protocols like REST or GraphQL.md",
-    "mabos/mabos-docs/Organize the UI components related to the MABOS feature in a way that reflects the structure of the multi-agent system, making it easier to manage and maintain.md",
-    "mabos/mabos-docs/Implement a clear way for the web application to communicate with the API, possibly through a dedicated service or API client module.md",
-    "mabos/mabos-docs/Knowledge management module subtask.md",
-    "mabos/mabos-docs/Inefficiency Identifier.md",
-    "mabos/mabos-docs/Implement a more structured approach to ontology management in the knowledge management module, possibly using a standard ontology language like OWL (Web Ontology Language).md",
-    "mabos/mabos-docs/HTNPlanner.md",
-    "mabos/mabos-docs/Delayed Message Queue.md",
-    "mabos/mabos-docs/Expand the planning module to support more sophisticated planning techniques, such as hierarchical task network (HTN) planning or partial-order planning (POP).md",
-    "mabos/mabos-docs/Define a clear interface or communication mechanism between the MABOS component and the API.md",
-    "mabos/mabos-docs/Bottleneck Identifier.md",
-    "mabos/mabos-docs/agents management/bdi/Skills.md",
-    "mabos/mabos-docs/agents management/Agents.md",
-    "mabos/mabos-docs/task management/Action.md",
-    "mabos/mabos-docs/agents management/bdi",
-    "mabos/mabos-docs/configuration management",
-    "mabos/mabos-docs/user management",
-    "mabos/mabos-docs/communication management",
-    "mabos/mabos-docs/task management",
-    "mabos/mabos-docs/goal management",
-    "mabos/mabos-docs/reasoner",
-    "mabos/mabos-docs/process management",
-    "mabos/mabos-docs/data management"
+    "Untitled.canvas"
   ]
 }

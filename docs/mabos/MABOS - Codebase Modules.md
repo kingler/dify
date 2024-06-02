@@ -18,9 +18,9 @@ MABOS directory consist of the following core modules, along with their relevant
      - Provides a framework for modeling agent beliefs, desires, and intentions.
      - Allows agents to reason about their environment and make decisions based on their goals and beliefs.
 
-3. [[docs/communication]] module:
+3. [[mabos/communication/communication]] module:
    - Description: This module handles communication between agents in the MABOS system.
-   - Related classes: [[Broker]], [[mabos/mabos-docs/communication management/Communication]], [[Communication Ontology]], [[Delayed Message Queue]], [[Group Formation]], [[Message]], [[Message Encryptor]], [[Message Serializer]], [[Message Storage]]
+   - Related classes: [[Broker]], [[mabos-docs/communication management/Communication]], [[Communication Ontology]], [[Delayed Message Queue]], [[Group Formation]], [[Message]], [[Message Encryptor]], [[Message Serializer]], [[Message Storage]]
    - Related features and functions:
      - Facilitates message passing between agents using a message broker.
      - Defines a communication ontology for agents to understand each other.

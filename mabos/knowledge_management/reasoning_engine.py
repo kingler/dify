@@ -4,7 +4,7 @@ from typing import List
 from mabos.event_management.event import Event
 
 from .ontology.ontology import Ontology
-from ..knowledge_management.core.knowledge_graph import KnowledgeGraph
+from ..knowledge_management.knowledge_graph import KnowledgeGraph
 from ..planning.plan import Plan
 from ..task_management.task import Task
 from ..task_management.action import Action
@@ -112,10 +112,8 @@ class Reasoning:
     def is_belief_consistent(self, agent: Agent, belief_id: str) -> bool:
         # Check if the belief is consistent with the agent's existing beliefs
         existing_beliefs = agent.get_beliefs()
-        for belief in existing_beliefs:
-            if self.ontology.are_beliefs_contradictory(belief_id, belief.belief_id):
-                return False
-        return True
+        # End of Selection
+        return not self.ontology.are_beliefs_contradictory(belief_id)
 
     def reason_desires(self, agent: Agent, beliefs: List[Belief]) -> List[Desire]:
         # Perform reasoning to update the agent's desires based on its beliefs and goals

@@ -1,6 +1,6 @@
 # mabos/process/business_process_manager.py
 from mabos.knowledge_management.ontology.ontology import Ontology
-from knowledge_management.knowledge_graph import KnowledgeGraph
+from mabos.knowledge_management.knowledge_base.knowledge_graph import KnowledgeGraph
 from monitoring.performance_metrics_collector import PerformanceMetricsCollector
 from monitoring.anomaly_detection_engine import AnomalyDetectionEngine
 from monitoring.predictive_analytics_engine import PredictiveAnalyticsEngine

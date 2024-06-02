@@ -1,4 +1,4 @@
-# Software Requirement Documentation SRD: Goal-Oriented BDI Multi-Agent Business Operation System (MABOS)
+#### Software Requirement Documentation SRD: Goal-Oriented BDI Multi-Agent Business Operation System (MABOS)
 
 Building a Goal-Oriented BDI Multi-Agent Business Operation System (MABOS) by extending the Dify open source project. I have thoroughly analyzed the conversation and will now organize it into a comprehensive software requirement documentation that a full stack developer proficient in Python and JavaScript can use to extend the Dify codebase and incorporate the MABOS functionality.
 

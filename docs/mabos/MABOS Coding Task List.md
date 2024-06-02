@@ -21,7 +21,7 @@ The goal is to ensure that the MABOS feature is seamlessly integrated
 
 - [ ] **Establish well-defined API endpoints for the web application:** [[Establish well-defined API endpoints for the web application to interact with, using standard protocols like REST or GraphQL]]
 
-- [ ] **Define a data format that is easily serializable and parsable:** [[mabos/mabos-docs/Define a data format that is easily serializable and parsable, such as JSON or Protocol Buffers, for data exchange between the web application, API, and MABOS]]
+- [ ] **Define a data format that is easily serializable and parsable:** [[mabos-docs/Define a data format that is easily serializable and parsable, such as JSON or Protocol Buffers, for data exchange between the web application, API, and MABOS]]
 
 - [ ] **Implement a clear interface for the MABOS component to receive requests and send responses:** [[Implement a clear interface for the MABOS component to receive requests and send responses, possibly through a message queue or pub sub system]]
 

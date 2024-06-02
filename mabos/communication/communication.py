@@ -2,7 +2,7 @@ from typing import Dict, Any, List
 import asyncio
 from ..agents.agent import Agent
 from ..task_management.task import Task
-from ..knowledge_management.knowledge_base import KnowledgeBase
+from ..knowledge_management.knowledge_base.knowledge_base import KnowledgeBase
 from ..knowledge_management.ontology.ontology import Ontology
 from ..communication.negotiation.contract_net_protocol import ContractNetProtocol
 from ..communication.negotiation.auction_based_negotiation import AuctionBasedNegotiation
