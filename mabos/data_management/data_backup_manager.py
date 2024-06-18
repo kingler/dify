@@ -1,6 +1,6 @@
 # mabos/data_management/data_backup_manager.py
-from mabos.logging.logger import Logger
-from mabos.configuration.configuration_manager import ConfigurationManager
+from mabos.agents.utils_agents.logger import Logger
+from mabos.agents.utils_agents.configuration_manager import ConfigurationManager
 from mabos.data_management.backup_storage import BackupStorage
 from mabos.data_management.backup_scheduler import BackupScheduler
 from mabos.data_management.backup_purger import BackupPurger

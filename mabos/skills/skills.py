@@ -1,7 +1,7 @@
 from typing import List, Dict, Any
 from ..agents.agent import Agent
 from ..task_management.task import Task
-from ..knowledge_management.reasoning_engine import Reasoning
+from ..knowledge_management.reasoning.reasoning_engine import Reasoning
 
 class Skill:
     def __init__(self, agent: Agent):

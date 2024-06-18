@@ -1,9 +1,9 @@
-# mabos/agents/security_agent.py
-from ...error_handler import AuthenticationError
+# mabos/security/security_manager.py
+from ..error_handler import AuthenticationError
 from cryptography.fernet import Fernet
 
 
-class SecurityAgent:
+class SecurityManager:
     def __init__(self, authentication_manager, authorization_manager):
         self.authentication_manager = authentication_manager
         self.authorization_manager = authorization_manager
@@ -19,16 +19,9 @@ class SecurityAgent:
             raise AuthenticationError("Invalid credentials")
 
     def authorize_user(self, user, resource):
-        authorization_result = self.authorization_manager.authorize(user, resource)
-        if authorization_result.is_authorized:
-            # User is authorized to access the resource
-            return True
-        else:
-            # User is not authorized to access the resource
-            return False
+        return self.authorization_manager.authorize(user, resource).is_authorized
 
     def encrypt_data(self, data):
-
         # Generate a key for encryption
         key = Fernet.generate_key()
         cipher_suite = Fernet(key)
@@ -39,7 +32,6 @@ class SecurityAgent:
 
         # Encrypt the data
         encrypted_data = cipher_suite.encrypt(data)
-
         return encrypted_data
 
     def decrypt_data(self, encrypted_data):

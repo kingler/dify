@@ -1,11 +1,11 @@
 # mabos/agents/onboarding_agent.py
-from ...communication.broker import Broker
-from ...communication.message_storage import MessageStorage
-from ...logging.logger import Logger
-from ...communication.message_encryptor import MessageEncryptor
-from ..information_agents.data_management_agent import DataManagementAgent
-from ..coordinator_agents.business_process_manager import BusinessProcessManager
-from ..information_agents.ontology_agent import OntologyAgent
+from .utils_agents.broker import Broker
+from .utils_agents.message_storage import MessageStorage
+from .utils_agents.logger import Logger
+from .utils_agents.message_encryptor import MessageEncryptor
+from .data_management_agent import DataManagementAgent
+from .business_process_manager import BusinessProcessManager
+from .ontology_agent import OntologyAgent
 
 class OnboardingAgent:
     def __init__(self, location, data_store):

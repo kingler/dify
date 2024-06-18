@@ -25,14 +25,24 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/folder tree structure/navigation tree structure.md",
+                "file": "docs/mabos/configuration management/Configuration.md",
                 "mode": "source",
                 "source": false
               }
             }
+          },
+          {
+            "id": "a97674f1280e13bb",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.6.2"
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -82,7 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 303.500732421875
+    "width": 319.500732421875
   },
   "right": {
     "id": "f2ab41a371acf6fd",
@@ -98,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/folder tree structure/navigation tree structure.md",
+                "file": "docs/mabos/configuration management/Configuration.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +125,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/folder tree structure/navigation tree structure.md",
+                "file": "docs/mabos/configuration management/Configuration.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/folder tree structure/navigation tree structure.md"
+                "file": "docs/mabos/configuration management/Configuration.md"
               }
             }
           }
@@ -160,45 +170,54 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5808062f598c9e5d",
+  "active": "a97674f1280e13bb",
   "lastOpenFiles": [
-    "mabos/knowledge_management/knowledge_base/__init__.py",
-    "mabos/knowledge_management/knowledge_graph/__init__.py",
-    "mabos/knowledge_management/knowledge_graph/knowledge_graph.py",
-    "mabos/knowledge_management/knowledge_graph",
-    "mabos/knowledge_management/knowledge_base/knowledge_base.py",
-    "mabos/knowledge_management/knowledge_graph.py",
-    "mabos/knowledge_management/knowledge_base.py",
-    "mabos/knowledge_management/process_templates/__init__.py",
-    "mabos/knowledge_management/process_templates/process_template.py",
-    "mabos/knowledge_management/process_templates",
-    "mabos/knowledge_management/industry_standards/__init__.py",
-    "docs/folder tree structure/web directory tree.md",
-    "docs/folder tree structure/api directory tree.md",
-    "docs/folder tree structure/codebase directory tree.md",
-    "docs/folder tree structure/mabos directory tree.md",
-    "docs/intergration-notes.md",
-    "docs/Owlready2.md",
-    "docs/ontology_api.md",
-    "docs/mabos/plan management/planning.md",
-    "docs/mabos/reasoner/Reasoning.md",
-    "docs/mabos/knowledge management/knowledge_graph.md",
-    "docs/mabos/agents management/skill management/agent_skills.md",
-    "docs/mabos/agents management/Broker.md",
-    "docs/mabos/agents management/Agents.md",
-    "docs/mabos/user management/Authentication Manager.md",
-    "docs/task_description.md",
-    "docs/Software Requirement Documentation (SRD).md",
-    "docs/mabos/task management/execution.md",
-    "docs/mabos/agents management/skill management/Skills.md",
-    "docs/mabos/agents management/bdi/Skills.md",
-    "docs/mabos/agents management/bdi/Intention.md",
-    "docs/mabos/agents management/bdi/Desire.md",
-    "docs/mabos/agents management/bdi/Belief.md",
-    "docs/mabos/agents management/bdi/BDI.md",
-    "docs/mabos/user management/User.md",
-    "docs/mabos/user management/User Management.md",
-    "api/core/model_runtime/docs/zh_Hans/images/index/image-2.png",
+    "web/test-mabos-system.mjs",
+    "web/test-mabos-system.js",
+    "web/check-mabos-system.mjs",
+    "web/types/check-mabos-system.mjs",
+    "web/types/check-mabos-system.js",
+    "web/types/checksystem.js",
+    "web/types/mabos.ts",
+    "web/app/components/mabos/OnboardingSteps.tsx",
+    "web/models/mabos.ts",
+    "web/service/mabos_service.ts",
+    "web/app/components/onboarding/OnboardingSteps.tsx",
+    "web/node_modules/fsevents/README.md",
+    "web/node_modules/next/README.md",
+    "web/node_modules/next/dist/compiled/@babel/runtime/README.md",
+    "web/node_modules/next/license.md",
+    "web/node_modules/monaco-editor/README.md",
+    "web/node_modules/monaco-editor/CHANGELOG.md",
+    "web/node_modules/@faker-js/faker/README.md",
+    "web/node_modules/@faker-js/faker/CHANGELOG.md",
+    "web/node_modules/@faker-js/faker/CHANGELOG_old.md",
+    "web/node_modules/typescript/README.md",
+    "web/node_modules/typescript/SECURITY.md",
+    "web/node_modules/echarts/README.md",
+    "web/node_modules/echarts/asset/logo.png",
+    "web/node_modules/echarts/extension-src/bmap/README.md",
+    "web/node_modules/react-syntax-highlighter/README.md",
+    "web/node_modules/react-syntax-highlighter/CODE_OF_CONDUCT.md",
+    "web/node_modules/react-syntax-highlighter/CHANGELOG.MD",
+    "web/node_modules/rxjs/README.md",
+    "web/node_modules/rxjs/CODE_OF_CONDUCT.md",
+    "web/node_modules/rxjs/CHANGELOG.md",
+    "web/node_modules/react-syntax-highlighter/AVAILABLE_STYLES_PRISM.MD",
+    "web/node_modules/react-syntax-highlighter/AVAILABLE_STYLES_HLJS.MD",
+    "web/node_modules/react-syntax-highlighter/AVAILABLE_LANGUAGES_PRISM.MD",
+    "web/node_modules/react-syntax-highlighter/AVAILABLE_LANGUAGES_HLJS.MD",
+    "web/node_modules/es-abstract/README.md",
+    "web/node_modules/es-abstract/CHANGELOG.md",
+    "web/node_modules/highlight.js/styles/school-book.png",
+    "web/node_modules/highlight.js/styles/brown-papersq.png",
+    "web/node_modules/lamejs/doc/1000px-Mp3filestructure.svg.png",
+    "web/node_modules/highlight.js/styles/pojoaque.jpg",
+    "web/node_modules/highlight.js/scss/school-book.png",
+    "web/node_modules/highlight.js/scss/pojoaque.jpg",
+    "web/node_modules/highlight.js/scss/brown-papersq.png",
+    "web/node_modules/cytoscape-fcose/node_modules/layout-base/layout-schema.png",
+    "web/node_modules/lamejs/src/main/resources/picture.png",
     "Untitled.canvas"
   ]
 }

@@ -1,10 +1,10 @@
 # mabos/process_management/process_optimization_engine.py
 import threading
 
-from mabos.logging.logger import Logger
+from mabos.agents.utils_agents.logger import Logger
 from mabos.data_management.repositories.process_definition_repository import ProcessDefinitionRepository
 from ...event_management.event import Event
-from mabos.knowledge_management.knowledge_base.process_templates.process_template import ProcessTemplate
+from process_templates.process_template import ProcessTemplate
 
 
 class ProcessOptimizationEngine:
@@ -69,9 +69,7 @@ class ProcessOptimizationEngine:
             optimization_suggestions.extend(template_suggestions)
         
         # Prioritize optimization suggestions based on impact and feasibility
-        prioritized_suggestions = self.prioritize_suggestions(optimization_suggestions)
-        
-        return prioritized_suggestions
+        return self.prioritize_suggestions(optimization_suggestions) if optimization_suggestions else []
 
     def apply_process_optimizations(self, process_definition_id, optimizations):
         # Apply optimizations to a process definition
@@ -104,8 +102,5 @@ class ProcessOptimizationEngine:
         ))
 
     def generate_template_suggestions(self, template):
-            # Generate optimization suggestions based on the provided template
-            suggestions = []
-            # Analyze the template and generate suggestions
-            # ...
-            return suggestions
+        # Analyze the template and generate suggestions
+        return []

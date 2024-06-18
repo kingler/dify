@@ -1,5 +1,6 @@
 # mabos/agents/data_management_agent.py
-class DataManagementAgent:
+
+class DataManager:
     def __init__(self, data_store):
         self.data_store = data_store
         # Initialize other attributes and components
@@ -13,10 +14,7 @@ class DataManagementAgent:
         self.data_store.store_data(data)
 
     def retrieve_data(self, query):
-        # Retrieve data from the data store based on the query
-        retrieved_data = self.data_store.retrieve_data(query)
-        return retrieved_data
-
+        return self.data_store.retrieve_data(query)
 
     def integrate_external_data(self, external_system):
         # Retrieve data from the external system
@@ -34,4 +32,4 @@ class DataManagementAgent:
         
         # Log the successful integration
         self.logger.log_info("External data integrated successfully")
-        pass
+

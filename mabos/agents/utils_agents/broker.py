@@ -1,7 +1,7 @@
 # mabos/communication/broker.py
 from .message_storage import MessageStorage
-from mabos.logging.logger import Logger
-from mabos.configuration.configuration_manager import ConfigurationManager
+from mabos.agents.utils_agents.logger import Logger
+from mabos.agents.utils_agents.configuration_manager import ConfigurationManager
 from queue import PriorityQueue
 from threading import Lock
 from mabos.monitoring.monitoring import MonitoringManager

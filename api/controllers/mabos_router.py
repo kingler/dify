@@ -1,15 +1,15 @@
-from fastapi import APIRouter
+from Flask import Blueprint
 from typing import List
 from ...mabos.agents.agent import Agent
 from ...mabos.goal_management.goal import Goal
-from ...mabos.planning.plan import Plan   
+from ...mabos.plan_management.plan import Plan   
 from ...mabos.task_management.action import Action
-from ..mabos.knowledge_base import KnowledgeBase
+from ...mabos.knowledge_management.knowledge_base import KnowledgeBase
 from ...mabos.knowledge_management.ontology.ontology import Ontology
 
-router = APIRouter()
+mabos_router = Blueprint('mabos_router', __name__)
 
-@router.post("/agents")
+@mabos_router.route("/agents", methods=['POST'])
 def create_agent(agent_id: str, beliefs: dict, desires: List[dict], intentions: List[dict], ontology: dict):
     # Create knowledge base and ontology instances
     ontology_instance = Ontology(concepts=ontology.get("concepts", {}), relationships=ontology.get("relationships", {}))
@@ -24,7 +24,7 @@ def create_agent(agent_id: str, beliefs: dict, desires: List[dict], intentions: 
 
     return {"agent_id": agent.agent_id}
 
-@router.get("/agents/{agent_id}")
+@mabos_router.route("/agents/{agent_id}", methods=['GET'])
 def get_agent(agent_id: str):
     agent = Agent.get_by_id(agent_id)
     if agent is None:
@@ -42,9 +42,8 @@ def get_agent(agent_id: str):
             "facts": agent.knowledge_base.facts
         }
     }
-    pass
 
-@router.put("/agents/{agent_id}/beliefs")
+@mabos_router.route("/agents/{agent_id}/beliefs", methods=['PUT'])
 def update_agent_beliefs(agent_id: str, beliefs: dict):
     agent = Agent.get_by_id(agent_id)
     if agent is None:
@@ -52,9 +51,8 @@ def update_agent_beliefs(agent_id: str, beliefs: dict):
 
     agent.beliefs.update(beliefs)
     return {"message": "Beliefs updated successfully", "agent_id": agent.agent_id}
-    pass
 
-@router.post("/agents/{agent_id}/goals")
+@mabos_router.route("/agents/{agent_id}/goals", methods=['POST'])
 def add_agent_goal(agent_id: str, goal: Goal):
     agent = Agent.get_by_id(agent_id)
     if agent is None:
@@ -64,9 +62,8 @@ def add_agent_goal(agent_id: str, goal: Goal):
     agent.desires.append(new_goal)
     
     return {"message": "Goal added successfully", "agent_id": agent.agent_id, "goal_id": new_goal.goal_id}
-    pass
 
-@router.post("/agents/{agent_id}/plans")
+@mabos_router.route("/agents/{agent_id}/plans", methods=['POST'])
 def add_agent_plan(agent_id: str, plan: Plan):
     agent = Agent.get_by_id(agent_id)
     if agent is None:
@@ -76,9 +73,8 @@ def add_agent_plan(agent_id: str, plan: Plan):
     agent.intentions.append(new_plan)
     
     return {"message": "Plan added successfully", "agent_id": agent.agent_id, "plan_id": new_plan.plan_id}
-    pass
 
-@router.delete("/agents/{agent_id}/plans/{plan_id}")
+@mabos_router.route("/agents/{agent_id}/plans/{plan_id}", methods=['DELETE'])
 def remove_agent_plan(agent_id: str, plan_id: str):
     # Implement logic to remove a plan from an agent
     agent = Agent.get_by_id(agent_id)
@@ -91,4 +87,3 @@ def remove_agent_plan(agent_id: str, plan_id: str):
 
     agent.intentions.remove(plan_to_remove)
     return {"message": "Plan removed successfully", "agent_id": agent.agent_id, "plan_id": plan_id}
-    pass

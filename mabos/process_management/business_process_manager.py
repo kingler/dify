@@ -1,6 +1,6 @@
 # mabos/process/business_process_manager.py
 from mabos.knowledge_management.ontology.ontology import Ontology
-from mabos.knowledge_management.knowledge_base.knowledge_graph import KnowledgeGraph
+from knowledge_management.knowledge_graph import KnowledgeGraph
 from monitoring.performance_metrics_collector import PerformanceMetricsCollector
 from monitoring.anomaly_detection_engine import AnomalyDetectionEngine
 from monitoring.predictive_analytics_engine import PredictiveAnalyticsEngine
@@ -43,48 +43,20 @@ class BusinessProcessManager:
         self.anomaly_detection_engine = AnomalyDetectionEngine(self.performance_metrics_collector)  # Reference to the anomaly detection engine
         self.predictive_analytics_engine = PredictiveAnalyticsEngine(self.performance_metrics_collector)  # Reference to the predictive analytics engine
 
-    def execute_process(self, process_definition):
+    def rollback_process(self, process_instance_id):
         """
-        Execute a business process based on the provided process definition.
+        Rollback the process execution to maintain system integrity.
 
         Args:
-            process_definition (dict): Dictionary representing the process definition.
+            process_instance_id (str): ID of the process instance to rollback.
         """
-        # Parse process definition and identify involved agents
-        # Assign tasks to agents based on their locations
-        # Coordinate task execution using the broker
-        # Parse process definition and identify involved agents
-        process_id = process_definition['id']
-        process_tasks = process_definition['tasks']
-        involved_agents = set()
-        for task in process_tasks:
-            agent_id = task['agent_id']
-            involved_agents.add(agent_id)
-        
-        # Assign tasks to agents based on their locations
-        task_assignments = {}
-        for agent_id in involved_agents:
-            agent_location = self.broker.get_agent_location(agent_id)
-            assigned_tasks = []
-            for task in process_tasks:
-                if task['location'] == agent_location:
-                    assigned_tasks.append(task)
-            task_assignments[agent_id] = assigned_tasks
-        
-        # Coordinate task execution using the broker
-        process_instance_id = self.broker.start_process(process_id, task_assignments)
-        self.process_instances[process_instance_id] = {
-            'process_id': process_id,
-            'task_assignments': task_assignments,
-            'status': 'started'
-        }
-        
-        for agent_id, tasks in task_assignments.items():
-            for task in tasks:
-                task_id = task['id']
-                self.task_status[task_id] = 'assigned'
-                self.broker.assign_task(agent_id, task)
-        pass
+        if process_instance_id in self.process_instances:
+            del self.process_instances[process_instance_id]
+        for task_id in self.task_status.keys():
+            if self.task_status[task_id] == 'assigned':
+                self.task_status[task_id] = 'unassigned'
+        self.broker.rollback_process(process_instance_id)
+        print(f"Rolled back process {process_instance_id} due to execution failure.")
 
     def monitor_process(self, process_instance_id):
         """
@@ -93,28 +65,28 @@ class BusinessProcessManager:
         Args:
             process_instance_id (str): ID of the process instance to monitor.
         """
-        # Monitor the progress of a process instance
-        # Collect status updates from involved agents using location-based addressing
-        # Apply delayed message passing for non-critical updates
-        process_instance = self.process_instances[process_instance_id]
-        task_assignments = process_instance['task_assignments']
-        
-        for agent_id, tasks in task_assignments.items():
-            agent_location = self.broker.get_agent_location(agent_id)
-            for task in tasks:
-                task_id = task['id']
-                task_status = self.broker.get_task_status(agent_id, task_id)
-                
-                if task_status == 'completed':
-                    self.task_status[task_id] = 'completed'
-                elif task_status == 'failed':
-                    self.task_status[task_id] = 'failed'
-                    # Handle task failure
-                else:
-                    # Apply delayed message passing for non-critical updates
-                    if not task['is_critical']:
+        try:
+            process_instance = self.process_instances[process_instance_id]
+            task_assignments = process_instance['task_assignments']
+            
+            for agent_id, tasks in task_assignments.items():
+                agent_location = self.broker.get_agent_location(agent_id)
+                for task in tasks:
+                    task_id = task['id']
+                    task_status = self.broker.get_task_status(agent_id, task_id)
+                    
+                    if task_status == 'completed':
+                        self.task_status[task_id] = 'completed'
+                    elif task_status == 'failed':
+                        self.task_status[task_id] = 'failed'
+                        # Handle task failure
+                    elif not task['is_critical']:
                         self.broker.send_delayed_message(agent_id, task_id, 'status_update')
-        
-        completed_tasks = [task for task, status in self.task_status.items() if status == 'completed']
-        if len(completed_tasks) == len(process_instance['task_assignments']):
-            process_instance['status'] = 'completed'
+            
+            completed_tasks = [task for task, status in self.task_status.items() if status == 'completed']
+            if len(completed_tasks) == len(process_instance['task_assignments']):
+                process_instance['status'] = 'completed'
+        except KeyError as e:
+            raise KeyError(f"Key error accessing process data: {str(e)}") from e
+        except Exception as e:
+            raise RuntimeError(f"An error occurred while monitoring the process {process_instance_id}: {str(e)}") from e

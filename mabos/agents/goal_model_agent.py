@@ -1,9 +1,9 @@
 # mabos/agents/goal_model_agent.py
-from ...communication.broker import Broker
-from ...communication.delayed_message_queue import DelayedMessageQueue
-from ...knowledge_management.knowledge_base.knowledge_base import KnowledgeBase
-from ...knowledge_management.ontology.ontology import Ontology
-from ...communication.communication import AgentCommunication
+from .utils_agents.broker import Broker
+from ..communication.delayed_message_queue import DelayedMessageQueue
+from ..knowledge_management.knowledge_base.knowledge_base import KnowledgeBase
+from ..knowledge_management.ontology.ontology import Ontology
+from ..communication.communication import AgentCommunication
 
 class GoalModelAgent:
     def __init__(self, location):

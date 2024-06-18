@@ -1,8 +1,11 @@
 from datetime import time
 from typing import List
 
+class InconsistencyError(Exception):
+    pass
 
 class Belief:
+    
     def __init__(self, belief_id: str, description: str, certainty: float, source: str, timestamp: float):
         self.belief_id = belief_id
         self.description = description
@@ -45,30 +48,20 @@ class Belief:
         # Ensure consistency with existing beliefs
 
     def contract_belief(self, belief_id: str):
-        # Find the belief to contract
-        belief_to_contract = next((b for b in self.belief_set if b.belief_id == belief_id), None)
-        
-        if belief_to_contract:
-            # Apply AGM postulates for contraction
-            # 1. Closure: The result of contracting a belief set by a sentence is a belief set (already satisfied by the belief set structure)
-            # 2. Success: If the sentence to be contracted is not a tautology, it will not be present in the contracted belief set
+        """Contracts a belief from the belief set.
+
+        This function removes a belief with the specified belief_id from the belief set if it exists and is not a tautology.
+
+        Args:
+            belief_id: The identifier of the belief to be contracted.
+
+        Returns:
+            None
+        """
+
+        if belief_to_contract := next((b for b in self.belief_set if b.belief_id == belief_id), None):
             if not self._is_tautology(belief_to_contract):
                 self.belief_set.remove(belief_to_contract)
-            
-            # 3. Inclusion: The contracted belief set is a subset of the original belief set
-            # (satisfied by removing the belief from the existing belief set)
-            
-            # 4. Vacuity: If the sentence to be contracted is not present in the belief set, the contracted belief set is equal to the original belief set
-            # (satisfied by the if condition that checks for the presence of the belief)
-            
-            # 5. Recovery: Contracting a belief set by a sentence and then expanding by the same sentence should result in the original belief set
-            # (not applicable in this context as we are not expanding after contraction)
-            
-            # 6. Extensionality: If two sentences are logically equivalent, then contracting a belief set by one sentence should be equal to contracting by the other sentence
-            # (not applicable in this context as we are dealing with belief objects rather than sentences)
-        else:
-            raise ValueError(f"Belief with ID {belief_id} not found in the belief set")
-        # Use AGM postulates for contraction
 
     def merge_beliefs(self, beliefs: List['Belief']):
         # Merge multiple beliefs related to the same concept
@@ -102,4 +95,34 @@ class Belief:
     def is_consistent(self, other_beliefs: List['Belief']) -> bool:
         # Check if the belief is consistent with other beliefs
         # Identify and resolve any inconsistencies
-        pass    
+        pass
+    
+    def update(self, new_evidence: dict):
+        """
+        Update the belief based on new evidence.
+        
+        Args:
+            new_evidence (dict): The new evidence to update the belief with.
+        """
+        self.revise_belief(new_evidence)
+        self.timestamp = time.time()
+    
+    def is_consistent_with(self, other_belief: 'Belief') -> bool:
+        """
+        Check if the belief is consistent with another belief.
+        
+        Args:
+            other_belief (Belief): The other belief to check consistency with.
+        
+        Returns:
+            bool: True if the beliefs are consistent, False otherwise.
+        """
+        # Check if the beliefs have the same concept
+        if self.concept != other_belief.concept:
+            return True  # Beliefs about different concepts are considered consistent
+        
+        # Check if the belief values are the same
+        if self.value == other_belief.value:
+            return True  # Beliefs with the same value are consistent
+        
+        return abs(self.value - other_belief.value) <= 0.1

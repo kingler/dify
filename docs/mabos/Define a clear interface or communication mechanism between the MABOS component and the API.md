@@ -75,5 +75,3 @@ if (response.status === 'success') {
 ```
 
 This structure keeps the shared interfaces in the `@mabos` directory, making them accessible to both the MABOS models and the web API. The `@web/api` directory contains the functions to make the actual API calls, which can be used by the MABOS components.
-
-Let me know if you have any further questions!

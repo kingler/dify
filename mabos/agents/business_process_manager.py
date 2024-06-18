@@ -1,8 +1,8 @@
-# mabos/process/business_process_manager.py
+# mabos/process/process_coordinator.py
 from mabos.communication.message import DelayedMessageQueue
 from datetime import datetime
 
-class BusinessProcessManager:
+class ProcessCoordinator:
     def __init__(self, broker):
         self.broker = broker
         self.task_assignments = {}
@@ -16,7 +16,7 @@ class BusinessProcessManager:
         tasks = process_definition.get("tasks", [])
         
         # Assign tasks to agents based on their locations
-        self.task_assignments = self._assign_tasks_to_agents(involved_agents)
+        self.task_assignments = self._assign_tasks_to_agents(involved_agents, tasks)
         
         # Coordinate task execution using the broker
         for agent, tasks in self.task_assignments.items():
@@ -56,8 +56,7 @@ class BusinessProcessManager:
         involved_agents = []
         tasks = process_definition.get("tasks", [])
         for task in tasks:
-            agent_id = task.get("agent_id")
-            if agent_id:
+            if agent_id := task.get("agent_id"):
                 involved_agents.append(agent_id)
         return involved_agents
 
@@ -95,4 +94,3 @@ class BusinessProcessManager:
         # Trigger any necessary actions based on the critical update
         if status.get("requires_immediate_action", False):
             self._trigger_immediate_action(agent, task, status)
-        

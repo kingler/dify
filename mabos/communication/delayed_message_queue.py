@@ -1,5 +1,5 @@
 # mabos/communication/delayed_message_queue.py
-from .broker import Broker
+from ..agents.utils_agents.broker import Broker
 
 class DelayedMessageQueue:
     def __init__(self):

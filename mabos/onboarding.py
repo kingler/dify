@@ -58,12 +58,26 @@ class Onboarding:
         return ontology
 
     def create_knowledge_graph(self):
-        knowledge_graph = Graph()
-
         # Populate the knowledge graph with instances and relationships
-        # based on the ontology structure and user onboarding data
+        return Graph()
 
-        return knowledge_graph
+    def module_discover_research(self, user_uri):
+        research_data = []
+        for step in self.knowledge_graph.objects(user_uri, self.ontology.hasOnboardingStep):
+            research_data.append({
+                'step': str(step),
+                'details': str(self.knowledge_graph.value(step, RDFS.comment))
+            })
+            return research_data
+
+    def module_business_development_planning(self, user_uri):
+        # Retrieve and manipulate data for the Business Development Planning module
+        business_plans = []
+        if (business_model_uri := self.knowledge_graph.value(user_uri, self.ontology.hasDescription)):
+            business_plans.append({
+                'description': str(self.knowledge_graph.value(business_model_uri, RDFS.comment))
+            })
+        return business_plans
 
     def generate_mas(self, user_data):
         # Extract relevant information from user_data
@@ -106,7 +120,6 @@ class Onboarding:
                 tool['properties'][str(predicate)] = str(obj)
             tools.append(tool)
         return tools
-        pass
 
     def generate_knowledge(self):
         knowledge = []
@@ -119,7 +132,6 @@ class Onboarding:
                 subject_knowledge['properties'][str(predicate)] = str(obj)
             knowledge.append(subject_knowledge)
         return knowledge
-        pass
     
     def capture_agent_specific_data(self, user_data):
             # Extract agent-specific information from user_data
@@ -135,5 +147,3 @@ class Onboarding:
             self.knowledge_graph.add((agent_uri, URIRef(f"http://example.com/ontology/{key}"), Literal(value)))
 
         return agent_uri
-
-

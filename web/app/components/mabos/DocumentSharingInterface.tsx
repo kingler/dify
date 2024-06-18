@@ -1,55 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { MabosService } from '../../services/MabosService'
+
+import type { DocumentDetails } from '@/types/mabos'
 
 const DocumentSharingInterface: React.FC = () => {
-  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    if (file) {
-      const formData = new FormData()
-      formData.append('file', file)
+  const [documentDetails, setDocumentDetails] = useState<DocumentDetails | null>(null)
 
+  useEffect(() => {
+    const fetchDocumentDetails = async () => {
       try {
-        const response = await fetch('http://localhost:5000/upload', {
-          method: 'POST',
-          body: formData,
-          credentials: 'include', // Include cookies or authorization headers if needed
-        })
-        if (response.ok) {
-          console.log('File uploaded successfully');
-        } else {
-          console.error('Upload failed');
-        }
+        const details = await MabosService.getDocumentDetails('123') // Example document ID
+        setDocumentDetails(details)
       } catch (error) {
-        console.error('Error:', error)
+        console.error('Error fetching document details:', error)
       }
     }
-  }
 
-  const handleFileDownload = async (fileName: string) => {
-    try {
-      const response = await fetch(`http://localhost:5000/download/${fileName}`)
-      if (response.ok) {
-        const blob = await response.blob()
-        const downloadUrl = window.URL.createObjectURL(blob)
-        const link = document.createElement('a')
-        link.href = downloadUrl
-        link.download = fileName
-        document.body.appendChild(link)
-        link.click()
-        link.remove()
-      } else {
-        console.error('Download failed')
-      }
-    } catch (error) {
-      console.error('Error:', error)
-    }
-  }
+    fetchDocumentDetails()
+  }, [])
 
   return (
     <div>
       <h2>Document Sharing</h2>
-      <input type="file" onChange={handleFileUpload} />
-      <button onClick={() => handleFileDownload('example.pdf')}>Download Example File</button>
-      {/* Implement other features as described */}
+      {documentDetails ? (
+        <div>
+          <h3>{documentDetails.title}</h3>
+          <p>{documentDetails.content}</p>
+        </div>
+      ) : (
+        <p>Loading document details...</p>
+      )}
     </div>
   )
 }
